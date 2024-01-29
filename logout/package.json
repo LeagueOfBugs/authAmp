@@ -1,0 +1,17 @@
+{
+  "name": "logout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "logoutFunction.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-lambda": "zip -r logout-lambda.zip logoutFunction.js node_modules && aws lambda create-function --function-name logoutFunction --runtime nodejs20.x --role arn:aws:iam::661566115886:role/LambdaExecutionRole --handler logoutFunction.handler --zip-file fileb://./logout-lambda.zip",
+    "update-lambda": "zip -r logout-lambda.zip logoutFunction.js node_modules && aws lambda update-function-code --function-name logoutFunction --zip-file fileb://./logout-lambda.zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1545.0"
+  }
+}
