@@ -1,0 +1,17 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "loginFunction.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-lambda": "zip -r login-lambda.zip loginFunction.js node_modules && aws lambda create-function --function-name loginFunction --runtime nodejs20.x --role arn:aws:iam::661566115886:role/LambdaExecutionRole --handler loginFunction.handler --zip-file fileb://./login-lambda.zip",
+    "update-lambda": "zip -r login-lambda.zip loginFunction.js node_modules && aws lambda update-function-code --function-name loginFunction --zip-file fileb://./login-lambda.zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1545.0"
+  }
+}

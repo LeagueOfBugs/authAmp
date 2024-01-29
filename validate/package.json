@@ -4,7 +4,9 @@
   "description": "",
   "main": "validateFunction.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-lambda": "zip -r validate-lambda.zip validateFunction.js node_modules && aws lambda create-function --function-name validateFunction --runtime nodejs20.x --role arn:aws:iam::661566115886:role/LambdaExecutionRole --handler validateFunction.handler --zip-file fileb://./validate-lambda.zip",
+    "update-lambda": "zip -r validate-lambda.zip validateFunction.js node_modules && aws lambda update-function-code --function-name validateFunction --zip-file fileb://./validate-lambda.zip"
   },
   "keywords": [],
   "author": "",

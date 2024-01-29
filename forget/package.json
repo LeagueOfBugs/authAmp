@@ -1,0 +1,17 @@
+{
+  "name": "forget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "forgetFunction.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-lambda": "zip -r forget-lambda.zip forgetFunction.js node_modules && aws lambda create-function --function-name forgetFunction --runtime nodejs20.x --role arn:aws:iam::661566115886:role/LambdaExecutionRole --handler forgetFunction.handler --zip-file fileb://./forget-lambda.zip",
+    "update-lambda": "zip -r forget-lambda.zip forgetFunction.js node_modules && aws lambda update-function-code --function-name forgetFunction --zip-file fileb://./forget-lambda.zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1545.0"
+  }
+}
